@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>Cepheid Variable Workshop</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src = "cepheids.js"></script>
+
+<h1> Cepheid Variable Exercise</h1>
+
+<p>This form is for submitting your answers to the Discovering Astronomy workshop 5.  See the worksheet for full instructions.  Write your answers on paper separately in case something goes wrong.</p>
+
+<p>The best way to submit is by saving the results as a PDF page using the button at the bottom of the page.  If this does not work for you, you can also submit by an auto-generated email.</p>
+
+
+<h2> Part 2.1</h2>
+<!-- Form for plotting. -->
+<!-- Return false prevents the page from being reloaded on submitting -->
+<form id="cepheid_form" onsubmit="plot_data(); return false;"></form>
+<table id="cepheid_table" style="table">
+    <TR>
+        <TH>Cepheid ID</TH>
+        <TH>Period / days</TH>
+    </TR>
+    <TR>
+        <TD><label for="CEP3874">OGLE-LMC-CEP3874</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP3874" name="CEP3874"></TD>
+    </TR>
+    <TR>
+        <TD><label for="CEP1391">OGLE-LMC-CEP1391</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP1391" name="CEP1391"></TD>
+    </TR>
+    <TR>
+        <TD><label for="CEP2944">OGLE-LMC-CEP2944</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP2944" name="CEP2944"></TD>
+    </TR>
+    <TR>
+        <TD><label for="CEP0871">OGLE-LMC-CEP0871</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP0871" name="CEP0871"></TD>
+    </TR>
+    <TR>
+        <TD><label for="CEP0648">OGLE-LMC-CEP0648</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP0648" name="CEP0648"></TD>
+    </TR>
+    <TR>
+        <TD><label for="CEP3158">OGLE-LMC-CEP3158</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP3158" name="CEP3158"></TD>
+    </TR>
+
+    <TR>
+        <TD><label for="CEP0328">OGLE-LMC-CEP0328</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP0328" name="CEP0328"></TD>
+    </TR>
+
+    <TR>
+        <TD><label for="CEP3396">OGLE-LMC-CEP3396:</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP3396" name="CEP3396"></TD>
+    </TR>
+
+    <TR>
+        <TD><label for="CEP4501">OGLE-LMC-CEP4501</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP4501" name="CEP4501"></TD>
+    </TR>
+
+    <TR>
+        <TD><label for="CEP2694">OGLE-LMC-CEP2694</label></TD>
+        <TD><input form="cepheid_form" type="text" id="CEP2694" name="CEP2694"></TD>
+    </TR>
+</table>
+
+<P><input form="cepheid_form" type="submit" value="Plot"> </P>
+
+<div id="space_for_plot">
+<!-- The javascript puts the plot here. -->
+</div>
+<!--
+<hr>
+<h2> Part 2.2: Fitting the curve</h2>
+<p>Enter the slope and intercept you find for the graph above here:</p>
+<form id="slope_intercept_form"></form>
+<table id="slope_intercept">
+    <TR>
+        <TH></TH>
+        <TH>Your answer</TH>
+    </TR>
+    <TR>
+        <TD><label for="slope">Slope:</label></TD>
+        <TD><input form="slope_intercept_form" type="text" id="slope" name="slope"></TD>
+    </TR>
+    <TR>
+        <TD><label for="slope">Intercept:</label></TD>
+        <TD><input form="slope_intercept_form" type="text" id="intercept" name="intercept"></TD>
+    </TR>
+</table>
+
+
+<hr>
+<h2> Part 2.3: LMC Distance</h2>
+<form id="mu_form"></form>
+<table id="mu_table">
+    <TR>
+        <TH></TH>
+        <TH>Your answer</TH>
+    </TR>
+    <TR>
+        <TD><label for="mu">LMC Distance modulus:</label></TD>
+        <TD><input form="mu_form" type="text" id="mu" name="mu"></TD>
+    </TR>
+</table>
+
+
+
+<hr>
+<h2> Part 2.4: Leavitt's Law</h2>
+<p>Enter the value b<sub>1</sub> you find for Leavitt's Law here:</p>
+<form id="leavitt_form"></form>
+<table id="leavitt_table">
+    <TR>
+        <TH></TH>
+        <TH>Your answer</TH>
+    </TR>
+    <TR>
+        <TD><label for="b1">b<sub>1</sub>:</label></TD>
+        <TD><input form="leavitt_form" type="text" id="b1" name="b1"></TD>
+    </TR>
+</table>
+
+
+<hr>
+<h2> Part 2.5: NGC 1365 Cepheid</h2>
+<p>Enter the absolute magnitude of the NGC-1365 Cepheid here:</p>
+<form id="ngcc_form"></form>
+<table id="ngcc_table">
+    <TR>
+        <TH></TH>
+        <TH>Your answer</TH>
+    </TR>
+    <TR>
+        <TD><label for="Mabs">Absolute magnitude</label></TD>
+        <TD><input form="ngcc_form" type="text" id="Mabs" name="Mabs"></TD>
+    </TR>
+</table>
+
+
+<hr>
+<h2> Part 2.6: NGC 1365 Distance</h2>
+<p>Enter the distance to the Galaxy NGC-1365 here:</p>
+<form id="ngc_form"></form>
+<table id="ngc_table">
+    <TR>
+        <TH></TH>
+        <TH>Your answer</TH>
+    </TR>
+    <TR>
+        <TD><label for="Mabs">Distance in parsecs</label></TD>
+        <TD><input form="ngc_form" type="text" id="dist" name="dist"></TD>
+    </TR>
+</table>
+
+<h2> Submitting your answers</h2>
+
+<p>We prefer you to submit by saving the results as a PDF page and submitting through LEARN..</p>
+
+<p>If this does not work for you, you can also submit by sending an auto-generated email.</p>
+
+
+<form id="email_form" onsubmit="sendEmail(); return false;"></form>
+<form id="pdf_form" onsubmit="makePDF(); return false;"></form>
+<TABLE>
+    <TR>
+        <TH></TH>
+        <TH>Input</TH>
+    </TR>
+    <TR>
+        <TD><label for="name">Your Name:</label></TD>
+        <TD><input form="email_form" type="text" id="name" name="name"></TD>
+    </TR>
+    <TR>
+        <TD><label for="uun">Your UUN:</label></TD>
+        <TD><input form="email_form" type="text" id="uun" name="uun"></TD>
+    </TR>
+    <TR>
+        <TD><label for="send">Download a PDF to submit yourself (preferred): </label></TD>
+        <TD><button form="pdf_form" type="submit" id="send" name="send">Make PDF</button></TD>
+    </TR>
+    <TR>
+        <TD><label for="send2">Make an email to send:</label></TD>
+        <TD><button form="email_form" type="submit" id="send2" name="send2">Send E-mail</button></TD>
+    </TR>
+</TABLE>
+
+  -->
+
+
+
+
+</body>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>Measurement Tool</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src = "measure.js"></script>
+
+<p>
+<label for="fileChooser">Choose an image to display</label>
+<input type="file" name="fileChooser" id="fileChooser" accept="image/jpeg" onchange="handleFileSelect(this);">
+</p>
+<canvas id="main_canvas" width="600" height="600"></canvas>
+<BR>
+<p id="dim_text">Image dimensions (pix): - </p>
+<p id="length_text">Line length (pix): - </p>
+
+</body>
