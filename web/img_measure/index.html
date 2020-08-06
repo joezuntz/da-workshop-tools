@@ -7,14 +7,18 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src = "measure.js"></script>
-
+<h1> Length measurement</h1>
+<p> You can use this tool to upload images and then measure the lengths of straight lines.</p>
+<p> Select a file to use below, and then click or tap on it to select alternating ends of the line to measure (clicking and dragging is not supported).  That maximum displayed image size is 600 x 600 pixels </p>
+<HR>
 <p>
-<label for="fileChooser">Choose an image to display</label>
+<label for="fileChooser">Choose image:</label>
 <input type="file" name="fileChooser" id="fileChooser" accept="image/jpeg" onchange="handleFileSelect(this);">
 </p>
-<canvas id="main_canvas" width="600" height="600"></canvas>
-<BR>
 <p id="dim_text">Image dimensions (pix): - </p>
 <p id="length_text">Line length (pix): - </p>
+
+<canvas id="main_canvas" width="600" height="600"></canvas>
+<BR>
 
 </body>
