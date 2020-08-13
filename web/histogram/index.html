@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>Histograms</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+    <script src = "histograms.js"></script>
+
+<h1> Histogrammer </h1>
+
+<P>Enter your numbers here then click the "Make Histogram" button below.  The binning is set to 0 .. 10 with spacing of 1.  We can alter this in histogram.js</P>
+<textarea id="numbers" cols="20" rows="30"></textarea><BR>
+
+<button onclick="make_histogram()">Make Histogram</button>
+<div id="my_histogram"></div>
+
+</body>
