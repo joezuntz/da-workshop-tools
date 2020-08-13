@@ -43,9 +43,9 @@ function draw_arrow(context, fromx, fromy, tox, toy) {
   context.moveTo(fromx, fromy);
 
   // start arrowhead
-  context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+  context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 2), fromy + headlen * Math.sin(angle - Math.PI / 2));
   context.moveTo(fromx, fromy);
-  context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+  context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 2), fromy + headlen * Math.sin(angle + Math.PI / 2));
 
   // main line
   context.moveTo(fromx, fromy);
@@ -60,8 +60,11 @@ function draw_arrow(context, fromx, fromy, tox, toy) {
 function update_lengths(point1, point2){
     var d2 = Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
     var d = Math.sqrt(d2).toFixed(1);
+    var theta = (-Math.atan2(point2.y - point1.y, point2.x - point1.x) * 180.0 / Math.PI).toFixed(1);
     length_text = document.getElementById("length_text");
     length_text.innerHTML  = `Line length (pix): ${d}`;
+    angle_text = document.getElementById("angle_text");
+    angle_text.innerHTML  = `Line angle (deg): ${theta}`;
 }
 
 

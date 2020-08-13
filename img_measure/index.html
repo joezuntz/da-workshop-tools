@@ -13,10 +13,11 @@
 <HR>
 <p>
 <label for="fileChooser">Choose image:</label>
-<input type="file" name="fileChooser" id="fileChooser" accept="image/jpeg" onchange="handleFileSelect(this);">
+<input type="file" name="fileChooser" id="fileChooser" accept="image/*" onchange="handleFileSelect(this);">
 </p>
 <p id="dim_text">Image dimensions (pix): - </p>
 <p id="length_text">Line length (pix): - </p>
+<p id="angle_text">Line angle (deg): - </p>
 
 <canvas id="main_canvas" width="600" height="600"></canvas>
 <BR>
