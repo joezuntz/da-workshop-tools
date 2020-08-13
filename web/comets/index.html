@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>Comets</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <script src="lib/d3.min.js"></script>
+    <script src="lib/d3.geo.projection.min.js"></script>
+    <script src="celestial.min.js"></script>
+    <script src = "sky.js"></script>
+
+<h1> Comet Plotting </h1>
+
+
+<form">
+  <p> Type your coordintes here.</p>
+  <p>One line per comet, with spaces between values.  Order is:</p>
+  <p> start_lat   start_lon   end_lat   end_lon</p>
+  <textarea id="comet-box" rows="20" cols="48">.</textarea><BR>
+
+  <p> Choose a projection </p>
+  <table>
+    <TBODY>
+    <tr><TD>
+        <input type="radio" id="aitoff" name="proj" value="Aitoff" checked="checked">
+        <label for="aitoff">Aitoff</label>
+</TD>
+    </tr>
+
+    <tr>
+  <TD>
+    <input type="radio" id="mercator" name="proj" value="Mercator">
+  <label for="mercator">Mercator</label>
+</TD>
+    </tr>
+
+    <tr>
+        <TD>
+  <input type="radio" id="orthographic" name="proj" value="Orthographic">
+  <label for="orthographic">Orthographic</label>
+</TD>
+    </tr>
+
+    <tr><TD>
+  <input type="radio" id="robinson" name="proj" value="Robinson">
+  <label for="robinson">Robinson</label>
+    </tr>
+</TBODY>
+
+  </table>
+
+
+<button onclick="plot_comets(); return false;">(Re)draw sky</button>
+</form>
+
+
+<div id="celestial-map"></div>
+
+</body>
