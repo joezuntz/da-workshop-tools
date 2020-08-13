@@ -145,7 +145,7 @@ function plot_comets() {
         // Pixel width
         width: 600,
         // path to local data
-        datapath: "d3-celestial/data/",
+        datapath: "data/",
         // adjust Milky Way opacity
         mw: {
             style: {
