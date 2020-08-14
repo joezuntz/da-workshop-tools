@@ -76,11 +76,14 @@ function redrawImage(image){
     }
     console.log("Redraw");
     var c = document.getElementById("main_canvas");
+
+    c.width  = image.width; // in pixels
+    c.height = image.height; // in pixels
     var ctx = c.getContext("2d");
 
     // Draw the b/g image
     ctx.beginPath();
-    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.clearRect(0, 0, image.width, image.height);
     ctx.drawImage(image, 0, 0, image.width, image.height);
     ctx.stroke();
 
