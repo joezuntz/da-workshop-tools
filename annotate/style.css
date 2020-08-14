@@ -1,0 +1,100 @@
+.line {
+    stroke: #E4002B;
+    fill: none;
+    stroke-width: 3;
+}
+
+
+
+h1 {
+    margin-left: 10%;
+}
+
+h2 {
+    margin-left: 10%;
+  margin-top:50px;
+
+}
+
+hr {
+    margin-left: 10%;
+    width: 60%;
+  margin-top:10px;
+
+}
+
+
+
+p {
+    margin-left: 10%;
+
+}
+
+canvas {
+    margin-left: 10%;
+
+}
+
+img {
+    margin-left: 10%;
+   
+}
+
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin-left: 10%
+}
+
+table  td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+
+.axis text {
+    font-size: 20px;
+    font-family: serif;
+}
+
+.text-label {
+    font-size: 20px;
+    font-family: serif;
+}
+
+.dot {
+    stroke: #293b47;
+    fill: #7A99AC
+}
+
+.website {
+  display: none;
+}
