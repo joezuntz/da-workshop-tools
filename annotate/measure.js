@@ -9,6 +9,8 @@ var colors = {
     "K5": "#f7a889",
     "M0": "#e26952",
     "M5": "#b40426",
+    "M5": "#b40426",
+    "Turn-off": "#00ff00"
 }
 
 
@@ -67,6 +69,11 @@ function set_active_button(button){
 
 }
 
+function get_text_width(context, text, fontSize, fontFace) {
+    context.font = fontSize + 'px ' + fontFace;
+    return context.measureText(text).width;
+}
+
 function click_button(button){
     set_active_button(button);
 
@@ -98,16 +105,21 @@ function redraw_image(image){
     for (kv of annotation_locations){
         var text = kv[0];
         var p = kv[1];
+        var width = ctx.measureText(text).width + 5
+        // Draw the dot
         ctx.beginPath();
         ctx.lineWidth = 1;
         ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
         ctx.fillStyle = colors[text];
         ctx.fill();
+        // Draw the label b/g
         ctx.fillStyle = "white";
-        ctx.fillRect(p.x + 1, p.y - 16, 23, 17);
+        ctx.fillRect(p.x + 1, p.y - 16, width, 17);
+        // Draw the label outline
         ctx.lineWidth = 3;
         ctx.strokeStyle = colors[text];
-        ctx.strokeRect(p.x + 1, p.y - 16, 23, 17);
+        ctx.strokeRect(p.x + 1, p.y - 16, width, 17);
+        // Draw the text
         ctx.fillStyle = "black";
         ctx.fillText(text, p.x+3, p.y - 3);
     }
