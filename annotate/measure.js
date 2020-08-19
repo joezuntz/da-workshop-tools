@@ -105,7 +105,7 @@ function redraw_image(image){
     for (kv of annotation_locations){
         var text = kv[0];
         var p = kv[1];
-        var width = ctx.measureText(text).width + 5
+        var width = ctx.measureText(text).width + 5;
         // Draw the dot
         ctx.beginPath();
         ctx.lineWidth = 1;
