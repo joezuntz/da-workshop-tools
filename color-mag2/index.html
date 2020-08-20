@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>General Main Sequence Diagram</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata@latest/dist/chartjs-plugin-dragdata.min.js"></script>
+    <script src = "chartjs-plugin-annotation.min.js"></script>
+    <script src = "cm2.js"></script>
+
+<h1> General Main Sequence Diagram </h1>
+
+<P>
+<button id="main_sequence" onclick="toggle_label_main_sequence();">Label Main Sequence</button>
+<button id="giants" onclick="toggle_label_giants();">Label Giant Branch</button>
+</p>
+<p >Click and drag the data points to the correct position.</p>
+<p>Then click the buttons above to select a label, and then click on the chart where to put it.</p>
+
+<p id="whats_happening">&nbsp;</p>
+
+<div class="chart-container" id="chart-container">
+<canvas id="main-canvas" width="600" height="600"></canvas>
+</div>
+<P><button id="reset" onclick="reset();">Reset</button></P>
+
+
+
+
+</body>
