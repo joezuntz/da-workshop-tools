@@ -1,6 +1,6 @@
-const xmin = 0.0
-const xmax = 10.0
-const dx = 1.0
+const xmin = 1.0
+const xmax = 6.0
+const dx = 0.25
 
 function split_lines(t) { return t.split(/\r\n|\r|\n/); }
 // https://stackoverflow.com/questions/21895233/how-in-node-to-split-string-by-newline-n
@@ -33,17 +33,22 @@ function make_histogram(){
     };
 
     var layout = {
+        width: 800,
+        hwight: 600,
         xaxis: {
             ticks: 'inside',
             range: [xmin, xmax],
+                showline: true,
         },
         yaxis: {
             ticks: 'inside',
+            showline: true,
+            range: [0,null]
         }
     };
 
     var data = [trace];
 
-    Plotly.newPlot('my_histogram', data, layout);
+    Plotly.newPlot('my_histogram', data, layout, width=800, height=600);
 
 }

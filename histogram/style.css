@@ -41,57 +41,11 @@ img {
    
 }
 
-#cepheid_table {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 60%;
-  margin-left: 10%
+#my_histogram {
+    margin-left: 10%;
+    margin-right: 10%;
+    /*height: 600px;*/
 }
-
-#cepheid_table  td, #cepheid_table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#cepheid_table tr:nth-child(even){background-color: #f2f2f2;}
-
-#cepheid_table tr:hover {background-color: #ddd;}
-
-#cepheid_table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-
-
-table {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 60%;
-  margin-left: 10%
-}
-
-table  td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-
 
 .axis path,
 .axis line {
