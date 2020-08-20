@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- Nice try. The answers aren't recorded here. -->
 <meta charset="utf-8">
-<title>Comets</title>
-<link rel="stylesheet" href="style.css">
+<title>Asteroids</title>
+<link rel="stylesheet" href="style.css?version=1">
 
 <body>
     <script src="lib/d3.min.js"></script>
@@ -10,17 +10,60 @@
     <script src="celestial.min.js"></script>
     <script src = "sky.js"></script>
 
-<h1> Comet Plotting </h1>
+<h1> Asteroid Plotting </h1>
 
 
-<form">
-  <p> Type your coordintes here.</p>
-  <p>One line per comet, with spaces between values.  Order is:</p>
-  <p> start_lat   start_lon   end_lat   end_lon</p>
-  <textarea id="comet-box" rows="20" cols="48">.</textarea><BR>
+  <p> Enter the coordinates and orientations of your asteroids.</p>
 
-  <p> Choose a projection </p>
+<form id="asteroid_form"></form>
+
+  <table id="data_table">
+    <THEAD>
+      <TR>
+      <TH>Asteroid</TH>
+      <TH>RA</TH>
+      <TH>Dec</TH>
+      <TH>Orientation</TH>
+    </TR>
+    </THEAD>
+    <TBODY>
+    <TR>
+        <TD><label for="ast1">1:</label></TD>
+        <TD><input form="asteroid_form" type="text" id="ra1" name="ra1"></TD>
+        <TD><input form="asteroid_form" type="text" id="dec1" name="dec1"></TD>
+        <TD><input form="asteroid_form" type="text" id="ang1" name="ang1"></TD>
+    </TR>
+    <TR>
+        <TD><label for="ast2">2:</label></TD>
+        <TD><input form="asteroid_form" type="text" id="ra2" name="ra2"></TD>
+        <TD><input form="asteroid_form" type="text" id="dec2" name="dec2"></TD>
+        <TD><input form="asteroid_form" type="text" id="ang2" name="ang2"></TD>
+    </TR>
+    <TR>
+        <TD><label for="ast3">3:</label></TD>
+        <TD><input form="asteroid_form" type="text" id="ra3" name="ra3"></TD>
+        <TD><input form="asteroid_form" type="text" id="dec3" name="dec3"></TD>
+        <TD><input form="asteroid_form" type="text" id="ang3" name="ang3"></TD>
+    </TR>
+    <TR>
+        <TD><label for="ast4">4:</label></TD>
+        <TD><input form="asteroid_form" type="text" id="ra4" name="ra4"></TD>
+        <TD><input form="asteroid_form" type="text" id="dec4" name="dec4"></TD>
+        <TD><input form="asteroid_form" type="text" id="ang4" name="ang4"></TD>
+    </TR>
+    <TR>
+        <TD><label for="ast5">5:</label></TD>
+        <TD><input form="asteroid_form" type="text" id="ra5" name="ra5"></TD>
+        <TD><input form="asteroid_form" type="text" id="dec5" name="dec5"></TD>
+        <TD><input form="asteroid_form" type="text" id="ang5" name="ang5"></TD>
+    </TR>
+</TBODY>
+</table>
+<BR>
   <table>
+    <THEAD>
+      <TH>Choose a projection</TH>
+    </THEAD>
     <TBODY>
     <tr><TD>
         <input type="radio" id="aitoff" name="proj" value="Aitoff" checked="checked">
@@ -50,9 +93,9 @@
 
   </table>
 
-
+<P>
 <button onclick="plot_comets(); return false;">(Re)draw sky</button>
-</form>
+</P>
 
 
 <div id="celestial-map"></div>

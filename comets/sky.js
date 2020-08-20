@@ -1,39 +1,16 @@
+const max_lines = 5;
+const line_length = 5; // degrees
 window.onload = function() {
-    // Pre-fill wth example
-    var prefill = `-24.61  -94.48  -24.67  -90.66
-24.49  92.10  24.39  95.93
--14.02  -140.51  -15.27  -136.37
--18.40  -110.94  -18.95  -106.38
-17.78  35.82  18.90  39.38
--18.24  -78.20  -17.81  -73.54
-28.10  90.71  27.97  96.55
--10.51  -29.84  -8.41  -24.21
-18.26  103.92  17.54  110.32
--19.03  -57.27  -17.85  -51.98
-3.22  13.89  5.00  18.21
--22.35  -75.16  -21.90  -70.98
-22.64  96.50  22.36  101.36
-25.45  96.96  25.14  102.16
--10.52  -15.84  -8.27  -10.40
-16.73  49.89  17.92  54.88
-21.50  52.59  22.41  56.74
--12.48  -28.30  -10.84  -23.90
--5.19  0.10  -3.10  4.93
--12.39  -156.06  -13.64  -152.71
-
-
-`;
-    document.getElementById("comet-box").value = prefill;
 
 };
 
 
-function ecliptic_to_equatorial(ecl){
-    const radeg =  180 / Math.PI;
+function ecliptic_to_equatorial(ecl) {
+    const radeg = 180 / Math.PI;
     const degra = Math.PI / 180;
-    var beta = ecl[ 0] * degra; // lat
+    var beta = ecl[0] * degra; // lat
     var lambda = ecl[1] * degra; // lon
-    const epsilon = 23.4 * degra;// obliquity
+    const epsilon = 23.4 * degra; // obliquity
 
     sin_e = Math.sin(epsilon);
     cos_e = Math.cos(epsilon);
@@ -44,48 +21,37 @@ function ecliptic_to_equatorial(ecl){
     return [ra * radeg, dec * radeg];
 }
 
-function get_comet_json(){
+function get_comet_json() {
     var lines = [];
 
-    var text = document.getElementById('comet-box').value;
-
-    // split into lines
-    var lines = text.split(/\r?\n/);
 
     var comets = [];
-    for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].trim();
-        if (!line){
+
+    for (var i = 1; i <= max_lines; i++) {
+        var ra = parseFloat(document.getElementById(`ra${i}`).value);
+        var dec = parseFloat(document.getElementById(`dec${i}`).value);
+        var ang = parseFloat(document.getElementById(`ang${i}`).value);
+
+        if (isNaN(ra) || isNaN(dec) || isNaN(ang)) {
             continue;
         }
-        // split into items
-        var elements = line.split(/\s+/);
 
-        // Check three are four elements on the line
-        if (elements.length != 4){
-            alert("Line " + (i + 1) + " does not have four space-separated numbers (wrong size)");
-            return null;
-        }
+        ang *= Math.PI / 180.;
 
-        // convert to floats. I miss python.
-        var coords = [];
-        for (var j = 0; j < elements.length; j++) {
-            var a = parseFloat(elements[j]);
-            if (isNaN(a)){
-                alert("Line " + (j + 1) + " does not have four space-separated numbers (not numbers)");
-                return null;
-            }
-            coords.push(a);
-        }
+        var start = [ra + line_length * Math.cos(ang), dec - line_length * Math.sin(ang)];
+        var end = [ra - line_length * Math.cos(ang), dec + line_length * Math.sin(ang)];
 
 
         var track = make_single_line(
-            [coords[1], coords[0]],
-            [coords[3], coords[2]], 
-            10, 
-            "Comet"+i.toString());
+            start,
+            end,
+            10,
+            "Comet" + i.toString()
+        );
+
         comets.push(track);
-        }
+
+    }
 
 
     var line_data = {
@@ -191,7 +157,7 @@ function plot_comets() {
     var jsonLine = get_comet_json();
 
 
-    if (jsonLine == null){
+    if (jsonLine == null) {
         return;
     }
 

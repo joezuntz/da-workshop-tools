@@ -50,8 +50,33 @@ img {
 }
 
 div {
-    margin-left: 10%;
+    margin-left: 20%;
 
+}
+
+
+#data_table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin-left: 10%
+}
+
+#data_table  td, #data_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#data_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#data_table tr:hover {background-color: #ddd;}
+
+#data_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
 
 
@@ -60,7 +85,7 @@ div {
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 20%;
+  width: 60%;
   margin-left: 10%
 }
 
@@ -69,18 +94,18 @@ table  td, th {
   padding: 8px;
 }
 
-/*tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(even){background-color: #f2f2f2;}
 
 tr:hover {background-color: #ddd;}
-*/
-/*th {
+
+th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: #4CAF50;
   color: white;
 }
-*/
+
 
 .axis path,
 .axis line {
