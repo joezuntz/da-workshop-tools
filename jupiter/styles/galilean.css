@@ -1,0 +1,111 @@
+
+/* Prevent text magnification on orientation change on Android.
+ * Seems like that ought to be something the user chooses in chrome,
+ * but chrome doesn't seem to offer that.
+ */
+body {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: 100%;
+
+  /*color: white; background: #556;*/
+}
+
+/*a:link { color: #ffff00; }
+a:visited { color: #aaffaa; }
+a:hover, a:active { color: #ffffaa; }
+*/
+div#jupframe {
+  background: black;
+  color: white;
+  position: relative;
+  width: 99%;
+  height: 100px;
+  padding: 0;
+  cursor: crosshair;
+}
+
+/* All images and labels inside the jupframe are absolutely positioned */
+#jupframe img, #jupframe span {
+   position: absolute; visibility: hidden; z-index: 50;
+}
+
+#jupframe span.moonlabel { color: white; top: .3em; }
+
+#jupframe span.shadowlabel { color: yellow; top: 1.1em; }
+
+#jupframe span.eclipselabel { color: blue; top: .3em; }
+
+#jupframe span#grslabel { color: #aaa; font-size: .9em; bottom: .1em; }
+
+#upcoming { background: #ddd; color: black; border: 1px inset; padding: 5px;  }
+
+/* width of the datetime text input */
+#datetimeinput { width: 15em; }
+
+input[type=button] { background: black; color: white; }
+input[type=text]   { background: #421; color: white; }
+select { background: #224; color: white; }
+
+/* I can't find any way to style an input button by name --
+ * it has to have an id as well as a name.
+ */
+
+/* As usual, the only way I could find to make the alignment of the
+ * calendar image sane was to do it with a table row. Otherwise,
+ * the image is higher than everything else, for no reason since it
+ * has no border, margin or padding.
+ */
+table.valign-row td {
+  vertical-align: bottom;
+}
+
+/* The calendar */
+#cal-container {
+  position: relative; /* width: 0; height: 0;*/
+  z-index: 100;
+}
+#calBorder {
+  position: absolute; left: 2em; top: 0em;
+  background: white;
+  /* opacity: .8; */
+  z-index: 90;
+  border: 2px outset black;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+
+
+#moon_table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin-left: 10%
+}
+
+#moon_table  td, #moon_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#moon_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#moon_table tr:hover {background-color: #ddd;}
+
+#moon_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.plots {
+    margin-left: 10%;
+    margin-right: 10%;
+    /*height: 600px;*/
+}
+
+.plotsep {
+  display: none;
+}

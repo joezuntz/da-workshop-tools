@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <title>The Galilean Moons</title>
+
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="styles/galilean.css?version=1">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="scripts/math.min.js"></script>
+  <script type="text/javascript" src="scripts/jupiter.js"></script>
+  <script type="text/javascript" src="scripts/jup-page.js"></script>
+
+<h1>The Galilean Moons</h1>
+<p>
+The four bright Galilean moons of Jupiter,
+Io, Europa, Ganymede and Callisto, and their shadows, are shown below.
+
+Select a date, and click one by one on the specified moon to record its location in the table below.  Once you have filled in the table, click Make Plot below.
+</p>
+
+<p id="instructions">
+    Locate and click on <span id="active_moon">XXX</span>, or click here:<BR>
+     <button onclick="click_not_visible();">Not visible</button>
+</p>
+
+<div id="jupframe">
+<img id="jupiter" src="images/smalljup.png">
+<img id="shadow0" src="images/moonshadow.png">
+<img id="shadow1" src="images/moonshadow.png">
+<img id="shadow2" src="images/moonshadow.png">
+<img id="shadow3" src="images/moonshadow.png">
+<img id="moon0" src="images/borderedmoon.png">
+<img id="moon1" src="images/borderedmoon.png">
+<img id="moon2" src="images/borderedmoon.png">
+<img id="moon3" src="images/borderedmoon.png">
+<span id="label0" class="moonlabel">I</span>
+<span id="label1" class="moonlabel">E</span>
+<span id="label2" class="moonlabel">G</span>
+<span id="label3" class="moonlabel">C</span>
+<span id="slabel0" class="shadowlabel">I</span>
+<span id="slabel1" class="shadowlabel">E</span>
+<span id="slabel2" class="shadowlabel">G</span>
+<span id="slabel3" class="shadowlabel">C</span>
+<span id="elabel0" class="eclipselabel">I</span>
+<span id="elabel1" class="eclipselabel">E</span>
+<span id="elabel2" class="eclipselabel">G</span>
+<span id="elabel3" class="eclipselabel">C</span>
+<span id="grslabel">GRS</span>
+</div>
+<p id="size_info"></p>
+
+<div>
+    <table>
+        <TR>
+            <TD><button id="Sep1" onclick="click_date_button(this);"> Sep 1</button></TD>
+            <TD><button id="Sep2" onclick="click_date_button(this);"> Sep 2</button></TD>
+            <TD><button id="Sep3" onclick="click_date_button(this);"> Sep 3</button></TD>
+            <TD><button id="Sep4" onclick="click_date_button(this);"> Sep 4</button></TD>
+            <TD><button id="Sep5" onclick="click_date_button(this);"> Sep 5</button></TD>
+            <TD><button id="Sep6" onclick="click_date_button(this);"> Sep 6</button></TD>
+            <TD><button id="Sep7" onclick="click_date_button(this);"> Sep 7</button></TD>
+            <TD><button id="Sep8" onclick="click_date_button(this);"> Sep 8</button></TD>
+            <TD><button id="Sep9" onclick="click_date_button(this);"> Sep 9</button></TD>
+            <TD><button id="Sep10" onclick="click_date_button(this);"> Sep 10</button></TD>
+            <TD><button id="Sep11" onclick="click_date_button(this);"> Sep 11</button></TD>
+            <TD><button id="Sep12" onclick="click_date_button(this);"> Sep 12</button></TD>
+            <TD><button id="Sep13" onclick="click_date_button(this);"> Sep 13</button></TD>
+            <TD><button id="Sep14" onclick="click_date_button(this);"> Sep 14</button></TD>
+
+        </TR>
+    </table>
+</div>
+<hr>
+<TABLE id="moon_table">
+    <THEAD>
+        <TH>Day</TH>
+        <TH>Io</TH>
+        <TH>Europa</TH>
+        <TH>Ganymede</TH>
+        <TH>Callisto</TH>
+    </THEAD>
+    <TBODY>
+        <TR><TD>1</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>2</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>3</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>4</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>5</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>6</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>7</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>8</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>9</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>10</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>11</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>12</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>13</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+        <TR><TD>14</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
+    </TBODY>
+
+</TABLE>
+
+<button onclick="make_plot()"> Make plots </button>
+<hr class="plotsep">
+<div id="Io-plot"></div>
+<!-- <input type="range" min="0.1" max="30" value="1" class="slider" id="Io-slider"> -->
+
+<hr class="plotsep">
+<div id="Europa-plot"></div>
+<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Europa-slider"> -->
+
+<hr class="plotsep">
+<div id="Ganymede-plot"></div>
+<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Ganymede-slider"> -->
+
+<hr class="plotsep">
+<div id="Callisto-plot"></div>
+<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Callisto-slider"> -->
+
+<p>The code that powers this page was adapted from the web app <a href="https://github.com/akkana/webapps/tree/master/galilean">Galilean
+on GitHub</a>. It is licensed under the GPL v2 or greater, meaning you can share and adapt it under certain conditions.</p>
+
+
+
+
+
+</body>
+</html>
