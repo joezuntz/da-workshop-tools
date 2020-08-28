@@ -6,7 +6,7 @@
 
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
-  <link rel="stylesheet" type="text/css" href="styles/galilean.css?version=1">
+  <link rel="stylesheet" type="text/css" href="styles/galilean.css?version=2">
 </head>
 
 <body>
@@ -18,13 +18,23 @@
   <script type="text/javascript" src="scripts/jup-page.js"></script>
 
 <h1>The Galilean Moons</h1>
+
+
 <p>
 The four bright Galilean moons of Jupiter,
 Io, Europa, Ganymede and Callisto, and their shadows, are shown below.
-
-Select a date, and click one by one on the specified moon to record its location in the table below.  Once you have filled in the table, click Make Plot below.
 </p>
 
+<p>
+Click one by one on the specified moon to record its x-location in pixels into the table below.  You will automatically cycle to the next observation date.  If you make a mistake, click on the date you want to change and fill in the moons again.
+</p>
+<p>Once you have filled in the table, click Make Plots below.
+</p>
+
+<p>See just under the diagram for the size of Jupiter on the image in pixels.  Later, you can use that to convert your radii in pixels to kilometres.
+</p>
+<hr>
+<!-- The span in here gets filled in with the current active moon -->
 <p id="instructions">
     Locate and click on <span id="active_moon">XXX</span>, or click here:<BR>
      <button onclick="click_not_visible();">Not visible</button>
@@ -54,9 +64,12 @@ Select a date, and click one by one on the specified moon to record its location
 <span id="elabel3" class="eclipselabel">C</span>
 <span id="grslabel">GRS</span>
 </div>
+
+<!-- This paragraph gets filled in with info about how many pixels Jupiter is displayed as -->
 <p id="size_info"></p>
 
 <div>
+    <!-- This table gets automatically filled in with date buttons-->
     <table >
         <TR id="button_row1"></TR>
         <TR id="button_row2"></TR>
@@ -64,6 +77,8 @@ Select a date, and click one by one on the specified moon to record its location
     </table>
 </div>
 <hr>
+
+<!-- This table gets automatically filled in with rows for observed values-->
 <TABLE id="moon_table">
     <THEAD>
         <TH>Obs #</TH>
@@ -74,25 +89,23 @@ Select a date, and click one by one on the specified moon to record its location
     </THEAD>
     <TBODY>
     </TBODY>
-
 </TABLE>
 
-<button onclick="make_plot()"> Make plots </button>
+<P>
+<button class="inset_button" onclick="make_plot()"> Make Plots </button>
+</P>
+
 <hr class="plotsep">
 <div id="Io-plot"></div>
-<!-- <input type="range" min="0.1" max="30" value="1" class="slider" id="Io-slider"> -->
 
 <hr class="plotsep">
 <div id="Europa-plot"></div>
-<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Europa-slider"> -->
 
 <hr class="plotsep">
 <div id="Ganymede-plot"></div>
-<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Ganymede-slider"> -->
 
 <hr class="plotsep">
 <div id="Callisto-plot"></div>
-<!-- <input type="range" min="0.1" max="30" value="50" class="slider" id="Callisto-slider"> -->
 
 <p>The code that powers this page was adapted from the web app <a href="https://github.com/akkana/webapps/tree/master/galilean">Galilean
 on GitHub</a>. It is licensed under the GPL v2 or greater, meaning you can share and adapt it under certain conditions.</p>
