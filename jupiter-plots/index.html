@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- Nice try. The answers aren't recorded here. -->
+<meta charset="utf-8">
+<title>Gallilean Moon Plots</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+    <script src = "orbit_plots.js"></script>
+
+<h1> Gallilean Moon Plots </h1>
+
+<!-- Table  -->
+<table>
+    <THEAD>
+        <TH>Name</TH>
+        <TH>Orbit radius</TH>
+        <TH>Orbit period</TH>
+    </THEAD>
+    <TBODY>
+        <TR>
+            <TD>Io</TD>
+            <TD><input id="io-r" type="text"></TD>
+            <TD><input id="io-T" type="text"></TD>
+        </TR>
+        <TR>
+            <TD>Europa</TD>
+            <TD><input id="europa-r" type="text"></TD>
+            <TD><input id="europa-T" type="text"></TD>
+        </TR>
+        <TR>
+            <TD>Ganymede</TD>
+            <TD><input id="ganymede-r" type="text"></TD>
+            <TD><input id="ganymede-T" type="text"></TD>
+        </TR>
+        <TR>
+            <TD>Callisto</TD>
+            <TD><input id="callisto-r" type="text"></TD>
+            <TD><input id="callisto-T" type="text"></TD>
+        </TR>
+    </TBODY>
+</table>
+
+<button onclick="make_plot()">Make Plot</button>
+<div id="my_plot"></div>
+</body>
