@@ -4,23 +4,87 @@
 // Adapted by Joe Zuntz, 2020
 
 var jup = null;
-var active_date = null;
-var active_button = null;
-var active_moon = null;
-var active_cell = null;
-const num_days = 14;
+var active_moon = 0;
+var active_obs = 0;
 
-const moons = ["Io", "Europa", "Ganymede", "Callisto"]
+// in days
+const baselines = [3.0,  5.0, 10.0, 20.0];
+
+const moons = ["Io", "Europa", "Ganymede", "Callisto"];
+
+const observations = [
+    "Sep 1 00:00",
+    "Sep 1 06:00",
+    "Sep 1 12:00",
+    "Sep 1 18:00",
+    "Sep 2 00:00",
+    "Sep 2 06:00",
+    "Sep 2 12:00",
+    "Sep 2 18:00",
+    "Sep 3 00:00",
+    "Sep 3 06:00",
+    "Sep 3 12:00",
+    "Sep 3 18:00",
+    "Sep 4 00:00",
+    "Sep 5 00:00",
+    "Sep 6 00:00",
+    "Sep 7 00:00",
+    "Sep 8 00:00",
+    "Sep 9 00:00",
+    "Sep 10 00:00",
+    "Sep 12 00:00",
+    "Sep 14 00:00",
+    "Sep 16 00:00",
+    "Sep 18 00:00",
+    "Sep 20 00:00",
+]
+
+const row1 = observations.length / 3;
+const row2 = row1 * 2;
+
+var observation_dates = [];
+
+for (var i = 0; i < observations.length; i++) {
+    var d = moment.utc("2020 " + observations[i], "YYYY MMM D HH:mm");
+    observation_dates.push(d.toDate());
+}
+
+
+
 
 window.onload = function() {
 
     jup = new Jupiter();
-    active_button = document.getElementById("Sep1");
-    active_button.style.background = "#aaffaa";
 
+    var row;
+    var results_table = document.getElementById("moon_table");
+    for (var i = 0; i < observations.length; i++) {
+        if (i < row1) row = document.getElementById("button_row1");
+        else if (i < row2) row = document.getElementById("button_row2");
+        else row = document.getElementById("button_row3");
+        var txt = observations[i];
+        var html = `<button id="btn-${i}" onclick="click_date_button(this);"> ${txt}</button></TD>`;
+        var cell = row.insertCell(-1);
+        cell.innerHTML = html;
+
+        // Create an empty <tr> element and add it to the 1st position of the table:
+        var results_row = results_table.insertRow(-1);
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cell1 = results_row.insertCell(0);
+        var i1 = i + 1;
+
+        cell1.innerHTML = i + 1
+        for (var j = 0; j < moons.length; j++) {
+            results_row.insertCell(-1);
+        }
+
+    }
+    
+    for (var i = 0; i < observations.length; i++) {
+
+    }    
     // Initial date is Sep 1
-    active_date = new Date(1598918400000);
-    set_highlighted_moon(0);
+    set_highlighted_moon(0, 0);
 
     // draw the initial image
     update_image();
@@ -30,19 +94,12 @@ window.onload = function() {
 
     var tab = document.getElementById("moon_table");
     for (var col = 1; col <= 4; col++) {
-        for (var row = 1; row <= 14; row++) {
+        for (var row = 1; row <= observations.length; row++) {
             var value = localStorage.getItem(`cell-${row}-${col}`);
             tab.rows[row].cells[col].innerHTML = value;
         }
     }
 
-
-    //
-    // var sliders = document.getElementsByClassName("slider");
-    // console.log(sliders);
-    // for (var slider of sliders) {
-    //     console.log(slider.id);
-    // }    
 }
 
 
@@ -55,23 +112,38 @@ function click_frame(event) {
     var x = event.pageX - x0;
     var y = event.pageY - y0;
 
+    set_active_value(x);
 
-    // save the coordinates
-    if (active_cell) {
-        active_cell.innerHTML = x;
-    }
-
-
-    // Jump to the next moon
-    set_highlighted_moon((active_moon + 1) % moons.length);
+    next_cell();
 }
 
-function set_active_cell_value(value) {
-    if (!active_cell) {
-        return;
+
+function next_cell(){
+    var moon = active_moon;
+    var obs = active_obs;
+
+
+
+    moon = moon + 1;
+
+    if (moon == moons.length){
+        moon = 0;
+        obs = obs + 1;
+    }
+    if (obs == observations.length){
+        obs = 0;
+        moon = 0;
     }
 
+    set_highlighted_moon(moon, obs);
+
+}
+
+function set_active_value(value) {
+    var active_cell = cell_for_moon_obs(active_moon, active_obs) ;
     active_cell.innerHTML = value;
+
+    // save in local storage
     var col = active_cell.cellIndex;
     var row = active_cell.parentElement.rowIndex;
     localStorage.setItem(`cell-${row}-${col}`, value);
@@ -79,64 +151,53 @@ function set_active_cell_value(value) {
 }
 
 function click_not_visible() {
-
-    if (active_cell) {
-        active_cell.innerHTML = "-";
-    }
-
-    set_highlighted_moon((active_moon + 1) % moons.length);
-
+    set_active_value(" - ");
+    next_cell();
 }
 
-function set_highlighted_moon(moon) {
-    active_moon = moon;
-    document.getElementById("active_moon").innerHTML = moons[moon];
-    var day = parseInt(active_button.id.substring(3)) - 1;
+function cell_for_moon_obs(moon, obs){
+    // skip header row and date column
+    var row = obs + 1;
+    var col = moon + 1;
+    cell = document.getElementById("moon_table").rows[row].cells[col];
+    return cell;
+}
 
-    if (active_cell) {
-        active_cell.style.backgroundColor = "";
-    }
+function set_highlighted_moon(moon, obs) {
+
+    document.getElementById("active_moon").innerHTML = moons[moon];
+
+    var previous_cell = cell_for_moon_obs(active_moon, active_obs);
+    previous_cell.style.backgroundColor = null;
+
+    var previous_button = document.getElementById(`btn-${active_obs}`);
+    previous_button.style.background = null;
+
+    // set the active values, used elsewhere
+    active_moon = moon;
+    active_obs = obs;
+
+    // update the paragraph telling them where to click
+    document.getElementById("active_moon").innerHTML = moons[moon];
 
     // highlight the corresponding cell in the 
-    var row = parseInt(active_button.id.substring(3));
-    var col = active_moon + 1;
-    active_cell = document.getElementById("moon_table").rows[row].cells[col];
-    active_cell.style.backgroundColor = "#aaffaa";
+    var new_cell = cell_for_moon_obs(active_moon, active_obs);
+    new_cell.style.backgroundColor = "#aaffaa";
 
+    //  set the new button colour
+    var new_button = document.getElementById(`btn-${obs}`)
+    new_button.style.background = "#aaffaa";
 
-
+    update_image();
 }
 
 function click_date_button(button) {
-
-    // Unset the previous button colour
-    if (active_button) {
-        active_button.style.background = null;
-    }
-    // Set the new button colour
-    active_button = button;
-    active_button.style.background = "#aaffaa";
-
-    // Set the date to use
-    var d = new Date(1598918400000);
-    var day = parseInt(button.id.substring(3)) - 1;
-    d.setDate(d.getDate() + day);
-    active_date = d;
-
-    // Redraw the image
-    update_image();
-
-    // Set the text
-
     // Highlight Io
-    set_highlighted_moon(0);
+    obs = parseInt(button.id.substring(4));
+    set_highlighted_moon(0, obs);
 }
 
 
-function set_date() {
-    active_date = new Date();
-
-}
 
 // A place to store the last width and height we measured.
 var gfxWidth, gfxHeight;
@@ -234,11 +295,8 @@ function placeImage(im, left, top, width, height) {
 // Update Jupiter and predict upcoming events based on whatever
 // date is in the date field of the page.
 function update_image() {
-    if (!active_date) {
-        return;
-    }
-
-    drawJupiter(jup, active_date);
+    var d = observation_dates[active_obs];
+    drawJupiter(jup, d);
 }
 
 window.onresize = update_image;
@@ -367,32 +425,21 @@ function array_min(elmt){
 
 function make_plot() {
 
-
+    var start_time = observation_dates[0].getTime();
     for (var moon = 0; moon < moons.length; moon++) {
         var x = [];
         var y = [];
-        for (var day = 1; day <= num_days; day++) {
-            var cell = document.getElementById("moon_table").rows[day].cells[moon + 1];
+        for (var i = 0; i < observations.length; i++) {
+            var cell = cell_for_moon_obs(moon, i);
             var v = parseFloat(cell.innerHTML);
             if (!isNaN(v)) {
-                x.push(day - 1);
+                var dt = observation_dates[i].getTime() - start_time; // milliseconds
+                dt /= (1000 * 60 * 60 * 24);
+                x.push(dt);
                 y.push(v);
             }
         }
 
-        // if (moon == 0) {
-        //     var A_guess = 0.25 * (array_max(y) - array_min(y))
-        //     var B_guess = A_guess;
-        //     var C_guess = array_mean(y);
-        //     var w_guess = 5.0
-        //     var scale = A_guess
-        //     var offset = C_guess;
-        //     var y_tmp = [];
-        //     for (var i = 0; i < y.size; i++){
-        //         y_tmp.push((y[i] - offset) / scale);
-        //     }
-        //     fit_sine(x, y, A_guess, B_guess, C_guess, w_guess);
-        // }
 
         var layout = {
             title: moons[moon],
@@ -409,7 +456,7 @@ function make_plot() {
             hwight: 600,
             xaxis: {
                 title: 'Time / days',
-                range: [0, 15],
+                range: [0, baselines[moon]],
                 ticks: 'inside',
                 showline: true,
             },
@@ -429,7 +476,6 @@ function make_plot() {
     }
 
     for (hr of document.getElementsByClassName("plotsep")){
-        console.log(hr);
         hr.style.display = "block";
     }
 
@@ -464,7 +510,7 @@ function fit_sine(t, y_obs, A_0, B_0, C_0, w_0){
 
     var iterations = 20;
     var beta = [A_0, B_0, C_0, w_0];
-    console.log(beta);
+
     for (var i = 0; i < iterations; i++) {
         var r = residuals(beta); // 13
         var J = jacobian(beta);  // 13 x 4

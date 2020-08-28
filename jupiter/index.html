@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/math.min.js"></script>
+  <script type="text/javascript" src="scripts/moment.min.js"></script>
   <script type="text/javascript" src="scripts/jupiter.js"></script>
   <script type="text/javascript" src="scripts/jup-page.js"></script>
 
@@ -56,50 +57,22 @@ Select a date, and click one by one on the specified moon to record its location
 <p id="size_info"></p>
 
 <div>
-    <table>
-        <TR>
-            <TD><button id="Sep1" onclick="click_date_button(this);"> Sep 1</button></TD>
-            <TD><button id="Sep2" onclick="click_date_button(this);"> Sep 2</button></TD>
-            <TD><button id="Sep3" onclick="click_date_button(this);"> Sep 3</button></TD>
-            <TD><button id="Sep4" onclick="click_date_button(this);"> Sep 4</button></TD>
-            <TD><button id="Sep5" onclick="click_date_button(this);"> Sep 5</button></TD>
-            <TD><button id="Sep6" onclick="click_date_button(this);"> Sep 6</button></TD>
-            <TD><button id="Sep7" onclick="click_date_button(this);"> Sep 7</button></TD>
-            <TD><button id="Sep8" onclick="click_date_button(this);"> Sep 8</button></TD>
-            <TD><button id="Sep9" onclick="click_date_button(this);"> Sep 9</button></TD>
-            <TD><button id="Sep10" onclick="click_date_button(this);"> Sep 10</button></TD>
-            <TD><button id="Sep11" onclick="click_date_button(this);"> Sep 11</button></TD>
-            <TD><button id="Sep12" onclick="click_date_button(this);"> Sep 12</button></TD>
-            <TD><button id="Sep13" onclick="click_date_button(this);"> Sep 13</button></TD>
-            <TD><button id="Sep14" onclick="click_date_button(this);"> Sep 14</button></TD>
-
-        </TR>
+    <table >
+        <TR id="button_row1"></TR>
+        <TR id="button_row2"></TR>
+        <TR id="button_row3"></TR>
     </table>
 </div>
 <hr>
 <TABLE id="moon_table">
     <THEAD>
-        <TH>Day</TH>
+        <TH>Obs #</TH>
         <TH>Io</TH>
         <TH>Europa</TH>
         <TH>Ganymede</TH>
         <TH>Callisto</TH>
     </THEAD>
     <TBODY>
-        <TR><TD>1</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>2</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>3</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>4</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>5</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>6</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>7</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>8</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>9</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>10</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>11</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>12</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>13</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
-        <TR><TD>14</TD> <TD></TD> <TD></TD> <TD></TD> <TD></TD></TR>
     </TBODY>
 
 </TABLE>
