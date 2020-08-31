@@ -312,7 +312,7 @@ var stepMinutes = 10; // default time to advance in each step
 function drawJupiter(jup, date) {
     jup.setDate(date);
 
-    var width = screenWidth();
+    var width = 0.8 * screenWidth();
     var halfwidth = width / 2;
     var height = 100;
     var halfheight = height / 2;
