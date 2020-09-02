@@ -2,11 +2,13 @@
 <!-- Nice try. The answers aren't recorded here. -->
 <meta charset="utf-8">
 <title>Cluster Colour-Magnitude Diagram</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?version=1">
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src = "measure.js"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
 <h1> Cluster Colour-Magnitude Diagram</h1>
 
 <HR>
@@ -26,5 +28,11 @@
 </P>
 <canvas id="main_canvas" width="692" height="484"></canvas>
 <BR>
+
+<hr>
+<div>
+<button onclick="save_page_pdf('colour-mag-1.pdf')">Make a PDF from this page</button>
+</div>
+<hr>
 
 </body>

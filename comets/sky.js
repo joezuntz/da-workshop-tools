@@ -97,6 +97,21 @@ function make_single_line(start_point, end_point, n, name) {
     return obj;
 }
 
+function which_projection(){
+
+    if (document.getElementById("aitoff").checked){
+        return 'aitoff';
+    }
+    else if (document.getElementById("mercator").checked){
+        return 'mercator';
+    }
+    else if (document.getElementById("orthographic").checked){
+        return 'orthographic';
+    }
+    else{
+        return 'robinson';
+    }
+}
 
 function plot_comets() {
 

@@ -66,6 +66,12 @@ th {
 }
 
 
+
+button {
+    margin-left: 10%;
+}
+
+
 .axis path,
 .axis line {
     fill: none;

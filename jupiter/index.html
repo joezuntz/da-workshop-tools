@@ -16,6 +16,8 @@
   <script type="text/javascript" src="scripts/moment.min.js"></script>
   <script type="text/javascript" src="scripts/jupiter.js"></script>
   <script type="text/javascript" src="scripts/jup-page.js"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
 
 <h1>The Galilean Moons</h1>
 
@@ -106,6 +108,13 @@ Click one by one on the specified moon to record its x-location in pixels into t
 
 <hr class="plotsep">
 <div id="Callisto-plot"></div>
+
+<hr>
+<div>
+<button onclick="save_page_pdf('gallilean-1.pdf')">Make a PDF from this page</button>
+</div>
+<hr>
+
 
 <p>The code that powers this page was adapted from the web app <a href="https://github.com/akkana/webapps/tree/master/galilean">Galilean
 on GitHub</a>. It is licensed under the GPL v2 or greater, meaning you can share and adapt it under certain conditions.</p>

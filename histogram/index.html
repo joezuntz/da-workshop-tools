@@ -7,6 +7,8 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
     <script src = "histograms.js"></script>
 
 <h1> Comet Histogram </h1>
@@ -17,5 +19,11 @@
 
 <button onclick="make_histogram()">Make Histogram</button>
 <div id="my_histogram"></div>
+
+<hr>
+<div>
+<button onclick="save_page_pdf('asteroids-2.pdf')">Make a PDF from this page</button>
+</div>
+<hr>
 
 </body>

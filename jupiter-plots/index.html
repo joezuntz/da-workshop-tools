@@ -2,12 +2,15 @@
 <!-- Nice try. The answers aren't recorded here. -->
 <meta charset="utf-8">
 <title>Gallilean Moon Plots</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?version=1">
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
     <script src = "orbit_plots.js"></script>
+
 
 <h1> Gallilean Moon Plots </h1>
 
@@ -41,7 +44,16 @@
         </TR>
     </TBODY>
 </table>
-
+<BR>
 <button onclick="make_plot()">Make Plot</button>
 <div id="my_plot"></div>
+
+<hr>
+<div>
+<button onclick="save_page_pdf('gallilean-2.pdf')">Make a PDF from this page</button>
+</div>
+<hr>
+
+
 </body>
+

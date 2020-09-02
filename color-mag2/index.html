@@ -2,12 +2,14 @@
 <!-- Nice try. The answers aren't recorded here. -->
 <meta charset="utf-8">
 <title>General Main Sequence Diagram</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?version=1">
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata@latest/dist/chartjs-plugin-dragdata.min.js"></script>
     <script src = "chartjs-plugin-annotation.min.js"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
     <script src = "cm2.js"></script>
 
 <h1> General Main Sequence Diagram </h1>
@@ -28,5 +30,9 @@
 
 
 
-
+<hr>
+<div>
+<button onclick="save_page_pdf('color-mag-2.pdf')">Make a PDF from this page</button>
+</div>
+<hr>
 </body>

@@ -9,6 +9,8 @@
     <script src="lib/d3.geo.projection.min.js"></script>
     <script src="celestial.min.js"></script>
     <script src = "sky.js"></script>
+    <script src="../shared/html2pdf.bundle.js"></script>
+    <script src="../shared/save_page_pdf.js"></script>
 
 <h1> Asteroid Plotting </h1>
 
@@ -100,4 +102,7 @@
 
 <div id="celestial-map"></div>
 
+<hr>
+<button onclick="save_page_pdf('asteroids-1.pdf')">Make a PDF from this page</button>
+<hr>
 </body>
