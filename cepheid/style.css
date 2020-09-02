@@ -33,6 +33,11 @@ img {
    
 }
 
+button {
+    margin-left: 10%;
+   
+}
+
 #cepheid_table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
