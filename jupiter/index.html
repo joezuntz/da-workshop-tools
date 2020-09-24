@@ -23,23 +23,27 @@
 
 
 <p>
-The four bright Galilean moons of Jupiter,
-Io, Europa, Ganymede and Callisto, and their shadows, are shown below.
+The four bright Galilean moons of Jupiter
+(Io, Europa, Ganymede and Callisto), and their shadows, are shown below.
 </p>
 
 <p>
-Click one by one on the specified moon to record its x-location in pixels into the table below.  You will automatically cycle to the next observation date.  If you make a mistake, click on the date you want to change and fill in the moons again.
+Click one by one on the specified moon to record its location (measured in pixels from the left hand side of the image) into the table below. <br> You will automatically cycle to the next observation date.  If you make a mistake, click on the date you want to change and fill in the moons again.
 </p>
-<p>Once you have filled in the table, click Make Plots below.
+<p>Once you have filled in the table, click 'Make Plots' below it. Then click on the 'Make a PDF from this page' button to save your table and plots for handing in.
 </p>
 
-<p>See just under the diagram for the size of Jupiter on the image in pixels.  Later, you can use that to convert your radii in pixels to kilometres.
+<p>The plots will show, for each moon, the changing distance across the image (on the y-axis) with time (on the x-axis). These should have a sine-wave type shape. <br>
+Use these to estimate the orbital period of each moon (how many days does it take for the pattern to repeat?) and the orbital radius (from the maximum apparent distance from Jupiter - which is half the full range in distance on the plot).
+</p>
+
+<p>See just under the diagram for the radius of Jupiter on the image in pixels.  Use this value to convert your orbital radius estimate in pixels to values in Jupiter radii, and write down your values for P (in days) and a (in Jupiter radii) for each of the 4 moons.
 </p>
 <hr>
 <!-- The span in here gets filled in with the current active moon -->
 <p id="instructions">
-    Locate and click on <span id="active_moon">XXX</span>, or click here:<BR>
-     <button onclick="click_not_visible();">Not visible</button>
+    Locate and click on <b><span id="active_moon">XXX</span></b>, or click here:
+     <button onclick="click_not_visible();">Not visible</button> if this moon is not visible in this image (it may be behind Jupiter!).
 </p>
 
 <div id="jupframe">
