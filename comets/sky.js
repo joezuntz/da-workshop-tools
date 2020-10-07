@@ -51,9 +51,10 @@ function get_comet_json() {
     var comets = [];
 
     for (var i = 1; i <= max_lines; i++) {
-        var ra = parseRightAscension(document.getElementById(`ra${i}`).value);
-        var dec = parseDeclination(document.getElementById(`dec${i}`).value);
-        var ang = parseFloat(document.getElementById(`ang${i}`).value);
+        var ra = parseRightAscension(document.getElementById(`ra${i}`).value.trim());
+        var dec = parseDeclination(document.getElementById(`dec${i}`).value.trim());
+        var ang = parseFloat(document.getElementById(`ang${i}`).value.trim());
+            console.log(i + "  " + (ra) + "  " + (dec) + "  " + (ang) );
 
         if (isNaN(ra) || isNaN(dec) || isNaN(ang)) {
             continue;
