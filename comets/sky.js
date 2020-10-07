@@ -1,6 +1,10 @@
-const max_lines = 5;
+const max_lines = 6;
 const line_length = 5; // degrees
 window.onload = function() {
+    document.getElementById("ra1").value = "15 43 45";
+    document.getElementById("dec1").value = "-20 35 00";
+    document.getElementById("ang1").value = "10";
+
 
 };
 
