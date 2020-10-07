@@ -5,7 +5,7 @@ window.onload = function() {
 };
 
 function parseRightAscension(text) {
-    var bits = text.split(text);
+    var bits = text.split(" ");
     if (bits.length != 3) {
         return NaN;
     }
@@ -17,7 +17,7 @@ function parseRightAscension(text) {
 }
 
 function parseDeclination(text) {
-    var bits = text.split(text);
+    var bits = text.split(" ");
     if (bits.length != 3) {
         return NaN;
     }
