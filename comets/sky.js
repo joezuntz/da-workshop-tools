@@ -4,6 +4,29 @@ window.onload = function() {
 
 };
 
+function parseRightAscension(text) {
+    var bits = text.split(" ");
+    if (bits.length != 3) {
+        return NaN;
+    }
+    var HH = parseFloat(bits[0]);
+    var MM = parseFloat(bits[1]);
+    var SS = parseFloat(bits[2])
+    var hours = HH + MM / 60.0 + SS / 3600.0;
+    return hours * 360.0 / 24.0;
+}
+
+function parseDeclination(text) {
+    var bits = text.split(" ");
+    if (bits.length != 3) {
+        return NaN;
+    }
+    var DD = parseFloat(bits[0]);
+    var MM = parseFloat(bits[1]);
+    var SS = parseFloat(bits[2]);
+    var sgn = Math.sign(DD);
+    return DD + (sgn * MM / 60.0) + (sgn * SS / 3600.0);
+}
 
 function ecliptic_to_equatorial(ecl) {
     const radeg = 180 / Math.PI;
@@ -28,9 +51,10 @@ function get_comet_json() {
     var comets = [];
 
     for (var i = 1; i <= max_lines; i++) {
-        var ra = parseFloat(document.getElementById(`ra${i}`).value);
-        var dec = parseFloat(document.getElementById(`dec${i}`).value);
-        var ang = parseFloat(document.getElementById(`ang${i}`).value);
+        var ra = parseRightAscension(document.getElementById(`ra${i}`).value.trim());
+        var dec = parseDeclination(document.getElementById(`dec${i}`).value.trim());
+        var ang = parseFloat(document.getElementById(`ang${i}`).value.trim());
+            console.log(i + "  " + (ra) + "  " + (dec) + "  " + (ang) );
 
         if (isNaN(ra) || isNaN(dec) || isNaN(ang)) {
             continue;
