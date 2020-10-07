@@ -170,73 +170,73 @@ function plot_comets() {
         dsos: {
             show: false,
         },
-        planets: {
-            show: true,
-            symbols: { // Character and color for each symbol in 'which' above (simple circle: \u25cf), optional size override for Sun & Moon
-                // "sol": {symbol: "\u2B24",  letter:"Su", fill: "#ffff00"},
-                "mer": {
-                    symbol: "\u2B24",
-                    letter: "Me",
-                    fill: "#cccccc"
-                },
-                "ven": {
-                    symbol: "\u2B24",
-                    letter: "V",
-                    fill: "#eeeecc"
-                },
-                "ter": {
-                    symbol: "\u2B24",
-                    letter: "T",
-                    fill: "#00ccff"
-                },
-                "lun": {
-                    symbol: "\u2B24",
-                    letter: "L",
-                    fill: "#ffffff"
-                }, // overridden by generated crecent, except letter & size
-                "mar": {
-                    symbol: "\u2B24",
-                    letter: "Ma",
-                    fill: "#ff6600"
-                },
-                // "cer": {symbol: "\u2B24",  letter:"C", fill: "#cccccc"},
-                "ves": {
-                    symbol: "\u2B24",
-                    letter: "Ma",
-                    fill: "#cccccc"
-                },
-                "jup": {
-                    symbol: "\u2B24",
-                    letter: "J",
-                    fill: "#ffaa33"
-                },
-                "sat": {
-                    symbol: "\u2B24",
-                    letter: "Sa",
-                    fill: "#ffdd66"
-                },
-                "ura": {
-                    symbol: "\u2B24",
-                    letter: "U",
-                    fill: "#66ccff"
-                },
-                "nep": {
-                    symbol: "\u2B24",
-                    letter: "N",
-                    fill: "#6666ff"
-                },
-                // "plu": {symbol: "\u2B24",  letter:"P", fill: "#aaaaaa"},
-                // "eri": {symbol: "\u2B24",  letter:"E", fill: "#eeeeee"}
-            },
-            symbolStyle: {
-                fill: "#00ccff",
-                font: "bold 8px 'Lucida Sans Unicode', Consolas, sans-serif",
-                align: "center",
-                baseline: "middle"
-            },
-            symbolType: "symbol",
-            names: true,
-        },
+        // planets: {
+        //     show: true,
+        //     symbols: { // Character and color for each symbol in 'which' above (simple circle: \u25cf), optional size override for Sun & Moon
+        //         // "sol": {symbol: "\u2B24",  letter:"Su", fill: "#ffff00"},
+        //         "mer": {
+        //             symbol: "\u2B24",
+        //             letter: "Me",
+        //             fill: "#cccccc"
+        //         },
+        //         "ven": {
+        //             symbol: "\u2B24",
+        //             letter: "V",
+        //             fill: "#eeeecc"
+        //         },
+        //         "ter": {
+        //             symbol: "\u2B24",
+        //             letter: "T",
+        //             fill: "#00ccff"
+        //         },
+        //         "lun": {
+        //             symbol: "\u2B24",
+        //             letter: "L",
+        //             fill: "#ffffff"
+        //         }, // overridden by generated crecent, except letter & size
+        //         "mar": {
+        //             symbol: "\u2B24",
+        //             letter: "Ma",
+        //             fill: "#ff6600"
+        //         },
+        //         // "cer": {symbol: "\u2B24",  letter:"C", fill: "#cccccc"},
+        //         "ves": {
+        //             symbol: "\u2B24",
+        //             letter: "Ma",
+        //             fill: "#cccccc"
+        //         },
+        //         "jup": {
+        //             symbol: "\u2B24",
+        //             letter: "J",
+        //             fill: "#ffaa33"
+        //         },
+        //         "sat": {
+        //             symbol: "\u2B24",
+        //             letter: "Sa",
+        //             fill: "#ffdd66"
+        //         },
+        //         "ura": {
+        //             symbol: "\u2B24",
+        //             letter: "U",
+        //             fill: "#66ccff"
+        //         },
+        //         "nep": {
+        //             symbol: "\u2B24",
+        //             letter: "N",
+        //             fill: "#6666ff"
+        //         },
+        //         // "plu": {symbol: "\u2B24",  letter:"P", fill: "#aaaaaa"},
+        //         // "eri": {symbol: "\u2B24",  letter:"E", fill: "#eeeeee"}
+        //     },
+        //     symbolStyle: {
+        //         fill: "#00ccff",
+        //         font: "bold 8px 'Lucida Sans Unicode', Consolas, sans-serif",
+        //         align: "center",
+        //         baseline: "middle"
+        //     },
+        //     symbolType: "symbol",
+        //     names: true,
+        // },
         lines: {
             ecliptic: {
                 show: false,
