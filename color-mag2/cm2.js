@@ -93,7 +93,7 @@ function load_data_locations() {
         var py = load_item(stars[i] + "-y");
         if (px == null || py == null) {
             data_locations.push({
-                x: 0,
+                x: -0.6,
                 y: -6 + 2 * i
             });
         } else {
@@ -113,8 +113,8 @@ function toggle_label_main_sequence() {
         toggle_label_giants();
     }
 
-    ms = document.getElementById('main_sequence');
-    p = document.getElementById('whats_happening');
+    var ms = document.getElementById('main_sequence');
+    var p = document.getElementById('whats_happening');
     if (adding_main_sequence) {
         adding_main_sequence = false;
         ms.style.background = null;
@@ -132,8 +132,8 @@ function toggle_label_giants() {
         toggle_label_main_sequence();
     }
 
-    ms = document.getElementById('giants');
-    p = document.getElementById('whats_happening');
+    var ms = document.getElementById('giants');
+    var p = document.getElementById('whats_happening');
     if (adding_giants) {
         adding_giants = false;
         ms.style.background = null;
@@ -153,6 +153,17 @@ function reset() {
     redraw_chart();
 }
 
+function write_location(xy){
+    var p = document.getElementById('what_now');
+    var x = xy.x.toFixed(2); 
+    var y = xy.y.toFixed(2); 
+    p.innerHTML = `B-V = ${x},  M_V = ${y}`;
+}
+
+function clear_location(){
+    var p = document.getElementById('what_now');
+    p.innerHTML = "B-V = ........,  M_V = ........";
+}
 
 function canvas_xy_to_chart_xy(chart, p) {
     var yTop = chart.chartArea.top;
@@ -222,7 +233,7 @@ function redraw_chart() {
                 fontSize: 16,
             },
             ticks: {
-                suggestedMin: 0,
+                suggestedMin: -0.5,
                 suggestedMax: 2,
                 stepSize: 0.2,
                 fontSize: 16,
@@ -238,7 +249,7 @@ function redraw_chart() {
             ticks: {
                 reverse: true,
                 suggestedMin: -10,
-                suggestedMax: 20,
+                suggestedMax: 15,
                 stepSize: 2.0,
                 fontSize: 16,
             },
@@ -289,12 +300,12 @@ function redraw_chart() {
                 showTooltip: true,
             },
             onDragStart: function(event, element) {
-
             },
             onDrag: function(event, datasetIndex, index, value) {
                 // change cursor style to grabbing during drag action
                 event.target.style.cursor = 'grabbing'
                 // where e = event
+                write_location(value);
             },
             onDragEnd: function(event, datasetIndex, index, value) {
                 // restore default cursor style upon drag release
@@ -303,6 +314,7 @@ function redraw_chart() {
                 data_locations[datasetIndex] = value;
                 save_item(stars[datasetIndex] + "-x", value.x);
                 save_item(stars[datasetIndex] + "-y", value.y);
+                clear_location();
 
             },
             hover: {
