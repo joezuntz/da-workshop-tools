@@ -2,7 +2,7 @@
 <!-- Nice try. The answers aren't recorded here. -->
 <meta charset="utf-8">
 <title>Cluster Colour-Magnitude Diagram</title>
-<link rel="stylesheet" href="style.css?version=1">
+<link rel="stylesheet" href="style.css?version=2">
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
@@ -12,20 +12,26 @@
 <h1> Cluster Colour-Magnitude Diagram</h1>
 
 <HR>
-<P>
-<button id="O5" onclick="click_button(this);">O5</button>
-<button id="B5" onclick="click_button(this);">B5</button>
-<button id="A5" onclick="click_button(this);">A5</button>
-<button id="F5" onclick="click_button(this);">F5</button>
-<button id="G5" onclick="click_button(this);">G5</button>
-<button id="K5" onclick="click_button(this);">K5</button>
-<button id="M0" onclick="click_button(this);">M0</button>
-<button id="M5" onclick="click_button(this);">M5</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="Turn-off" onclick="click_button(this);">MS Turn-off</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button id="reset" onclick="reset();">Clear</button>
-</P>
+<table class=buttons>
+        <TBODY>
+    <TR>
+<TD><button id="O5" onclick="click_button(this);">O5</button></TD>
+<TD><button id="B5" onclick="click_button(this);">B5</button></TD>
+<TD><button id="A5" onclick="click_button(this);">A5</button></TD>
+<TD><button id="F5" onclick="click_button(this);">F5</button></TD>
+</TR>
+<TR>
+<TD><button id="G5" onclick="click_button(this);">G5</button></TD>
+<TD><button id="K5" onclick="click_button(this);">K5</button></TD>
+<TD><button id="M0" onclick="click_button(this);">M0</button></TD>
+<TD><button id="M5" onclick="click_button(this);">M5</button></TD>
+</TR>
+<TR>
+<TD><button id="Turn-off" onclick="click_button(this);">Turn-off</button></TD>
+<TD><button id="reset" onclick="reset();">Clear</button></TD>
+</TR>
+</TBODY>
+</table>
 <canvas id="main_canvas" width="692" height="484"></canvas>
 <BR>
 
