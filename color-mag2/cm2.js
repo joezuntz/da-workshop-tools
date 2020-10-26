@@ -67,24 +67,22 @@ function load_data_locations() {
     data_locations = [];
     var msx = load_item("ms-x");
     var msy = load_item("ms-y");
-    if ((msx != null) && (msy != null)){
+    if ((msx != null) && (msy != null)) {
         main_sequence_location = {
             x: msx,
             y: msy,
         }
-    }
-    else{
+    } else {
         main_sequence_location = null;
     }
     var gx = load_item("giant-x");
     var gy = load_item("giant-y");
-    if ((gx != null) && (gy != null)){
+    if ((gx != null) && (gy != null)) {
         giant_location = {
             x: gx,
             y: gy,
         }
-    }
-    else{
+    } else {
         giant_location = null;
     }
 
@@ -153,14 +151,14 @@ function reset() {
     redraw_chart();
 }
 
-function write_location(xy){
+function write_location(xy) {
     var p = document.getElementById('what_now');
-    var x = xy.x.toFixed(2); 
-    var y = xy.y.toFixed(2); 
+    var x = xy.x.toFixed(2);
+    var y = xy.y.toFixed(2);
     p.innerHTML = `B-V = ${x},  M_V = ${y}`;
 }
 
-function clear_location(){
+function clear_location() {
     var p = document.getElementById('what_now');
     p.innerHTML = "B-V = ........,  M_V = ........";
 }
@@ -198,7 +196,7 @@ function canvas_xy_to_chart_xy(chart, p) {
 
 
 function redraw_chart() {
-    if (chart){
+    if (chart) {
         chart.destroy();
     }
 
@@ -299,8 +297,7 @@ function redraw_chart() {
             dragOptions: {
                 showTooltip: true,
             },
-            onDragStart: function(event, element) {
-            },
+            onDragStart: function(event, element) {},
             onDrag: function(event, datasetIndex, index, value) {
                 // change cursor style to grabbing during drag action
                 event.target.style.cursor = 'grabbing'
