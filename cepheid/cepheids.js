@@ -285,5 +285,7 @@ window.pagehide = function() {
 
 window.onload = function() {
     items.forEach(load_item);
+    document.getElementById("CEP1391").value = "11.1";
+
 }
 
